@@ -1,11 +1,1 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-
-export default defineConfig({
-  // Add Tailwind support
-  integrations: [tailwind()],
-
-  // vital for GitHub Pages hosting
-  site: 'https://github.com',
-  base: '/g3z-agency-template-v1', 
-});
+import { defineConfig } from 'astro/config'; import tailwind from '@astrojs/tailwind';  export default defineConfig({   integrations: [tailwind()],   site: 'https://cgdops.github.io',   base: '/client-ancat-media-group', // <--- n8n injects the new repo name here });
