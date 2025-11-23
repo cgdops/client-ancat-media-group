@@ -1,1 +1,7 @@
-import { defineConfig } from 'astro/config'; import tailwind from '@astrojs/tailwind';  export default defineConfig({   integrations: [tailwind()],   site: 'https://cgdops.github.io',   base: '/client-ancat-media-group', // <--- n8n injects the new repo name here });
+import { defineConfig } from 'astro/config'; 
+import tailwind from '@astrojs/tailwind';  
+export default defineConfig({   
+  integrations: [tailwind()],   
+  site: 'https://cgdops.github.io',   
+  base: '/client-ancat-media-group', 
+});
