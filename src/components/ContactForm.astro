@@ -67,7 +67,10 @@ const { clientName } = Astro.props;
     try {
       await fetch(webhookUrl, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'x-agency-auth': 'Agency-Secret-8822'
+        },
         body: JSON.stringify(data)
       });
       
