@@ -14,7 +14,6 @@ const SITE_KEY = '0x4AAAAAACCiLfxuRd_TGxUx';
     </div>
     <div class="mt-12">
       <form id="agency-form" class="grid grid-cols-1 gap-y-6">
-        <div class="cf-turnstile" data-sitekey={SITE_KEY}></div>
         
         <input type="hidden" name="client_name" value={clientName} />
 
@@ -43,6 +42,7 @@ const SITE_KEY = '0x4AAAAAACCiLfxuRd_TGxUx';
           <button type="submit" class="w-full inline-flex justify-center py-3 px-6 border border-transparent shadow-sm text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
             Submit
           </button>
+          <div class="cf-turnstile" data-sitekey={SITE_KEY}></div>
         </div>
         
         <div id="form-status" class="hidden text-center text-sm font-medium mt-4"></div>
