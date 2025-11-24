@@ -1,7 +1,12 @@
 import { defineConfig } from 'astro/config'; 
 import tailwind from '@astrojs/tailwind';  
+import sitemap from '@astrojs/sitemap';
+
 export default defineConfig({   
-  integrations: [tailwind()],   
-  site: 'https://cgdops.github.io',   
-  base: '/client-ancat-media-group', 
+  integrations: [
+    tailwind(),
+    sitemap()
+  ],   
+  site: 'https://ancatmediagroup.com',   
+  //base: '/client-ancat-media-group', 
 });
