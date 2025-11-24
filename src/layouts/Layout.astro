@@ -1,20 +1,28 @@
 ---
-import content from '../data/site-content.json';
+// Import the raw JSON
+import contentRaw from '../data/site-content.json';
+
+// SAFETY CHECK: Ensure content exists, or use an empty object
+const content = contentRaw || {};
+const contact = content.contact || {};
+const meta = content.meta || {};
+
 const { title, description } = Astro.props;
 
-// Construct the Schema for AI
+// Construct the Schema safely
+// If data is missing, it falls back to empty strings instead of crashing
 const schemaData = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": content.meta.title,
-  "description": content.meta.description,
-  "telephone": content.contact.phone,
-  "email": content.contact.email,
-  "url": `https://${Astro.site?.host}${Astro.site?.pathname}`, 
+  "name": meta.title || "Agency Client",
+  "description": meta.description || "",
+  "telephone": contact.phone || "111-111-1111",  // <--- This was the line causing the error
+  "email": contact.email || "contact@email.com",
+  "url": Astro.site ? new URL(Astro.site).href : "", 
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Miami", // You can add this to your JSON later
-    "addressRegion": "FL"
+    "addressLocality": "US", 
+    "addressRegion": "US"
   }
 };
 ---
@@ -28,7 +36,10 @@ const schemaData = {
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+        
+        {contact.phone && (
+           <script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+        )}
 	</head>
 	<body class="bg-white text-gray-900 antialiased">
 		<slot />
